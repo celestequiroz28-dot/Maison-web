@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Web | Alta Costura y Modelaje</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuentes de Google para un toque elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Maison Web</div>
+        <ul class="nav-links">
+            <li><a href="#tendencias">Tendencias</a></li>
+            <li><a href="#agencias">Agencias</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Descubre tu Estilo, Define la Pasarela</h1>
+            <p>Lo último de Vogue, Dolce & Gabbana y las oportunidades para brillar en la industria.</p>
+            <a href="#agencias" class="btn-primary">Inicia tu Carrera</a>
+        </div>
+    </header>
+
+    <section id="tendencias" class="section">
+        <h2>Últimas Tendencias</h2>
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-img mock-img-1"></div>
+                <h3>Vogue Edit: Temporada</h3>
+                <p>Las siluetas que están dominando las capitales de la moda este trimestre.</p>
+            </div>
+            <div class="card">
+                <div class="card-img mock-img-2"></div>
+                <h3>Dolce & Gabbana: Renacimiento</h3>
+                <p>El regreso del maximalismo refinado y los estampados icónicos de la casa italiana.</p>
+            </div>
+            <div class="card">
+                <div class="card-img mock-img-3"></div>
+                <h3>Lujo de los 90s & Paparazzi Style</h3>
+                <p>El grano fílmico, el motion blur y la estética casual-chic capturada in fraganti vuelven a ser el centro de atención.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="agencias" class="section bg-light">
+        <h2>Aplica a Agencias Top</h2>
+        <div class="grid-container">
+            <div class="agency-card">
+                <h3>IMG Models</h3>
+                <p>Representación global para talentos de alta costura.</p>
+                <button class="btn-secondary apply-btn">Aplicar Ahora</button>
+            </div>
+            <div class="agency-card">
+                <h3>Elite Model Management</h3>
+                <p>Descubriendo los rostros de las próximas campañas de lujo.</p>
+                <button class="btn-secondary apply-btn">Aplicar Ahora</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Aplicación -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Envía tu Portafolio</h2>
+            <form id="applyForm">
+                <input type="text" placeholder="Nombre Completo" required>
+                <input type="email" placeholder="Correo Electrónico" required>
+                <input type="url" placeholder="Enlace a tu Portafolio/Instagram" required>
+                <button type="submit" class="btn-primary">Enviar Solicitud</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Asistente de Imagen AI (Botón flotante y Chat) -->
+    <div class="ai-assistant-container">
+        <button id="ai-toggle" class="ai-fab">✨ Asistente de Imagen</button>
+        <div id="ai-chat" class="ai-chatbox hidden">
+            <div class="chat-header">
+                <h3>Asistente de Estilo AI</h3>
+                <span id="close-chat">&times;</span>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message ai-msg">¡Hola! Soy tu asistente de imagen. ¿Buscas inspiración de outfits, consejos para tu casting o quieres saber qué paleta te favorece?</div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" placeholder="Pregúntame sobre moda...">
+                <button id="send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

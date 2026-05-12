@@ -1,0 +1,322 @@
+:root {
+    --primary-color: #1a1a1a; /* Negro suave */
+    --secondary-color: #d4af37; /* Dorado clásico */
+    --bg-color: #fbfbf9; /* Crema/Off-white */
+    --text-color: #333333;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h1 {
+    color: #fff;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+/* Botones */
+.btn-primary, .btn-secondary {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px; /* Bordes suaves, no rígidos */
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #bfa032;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Secciones y Grids */
+.section {
+    padding: 80px 50px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.bg-light {
+    background-color: #f0f0ed;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjetas */
+.card, .agency-card {
+    background: #fff;
+    border-radius: 15px; /* Amigable a la vista */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    padding-bottom: 20px;
+}
+
+.card:hover, .agency-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-img {
+    height: 250px;
+    background-color: #ddd;
+    margin-bottom: 20px;
+}
+
+/* Imágenes mock para las tarjetas */
+.mock-img-1 { background: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500') center/cover; }
+.mock-img-2 { background: url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500') center/cover; }
+.mock-img-3 { background: url('https://images.unsplash.com/photo-1550614000-4b95d4ed187f?w=500') center/cover; }
+
+.card h3, .agency-card h3 {
+    margin-bottom: 10px;
+    padding: 0 20px;
+}
+
+.card p, .agency-card p {
+    font-size: 14px;
+    color: #666;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-body);
+}
+
+/* Asistente AI */
+.ai-assistant-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.ai-fab {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.ai-fab:hover {
+    transform: scale(1.05);
+}
+
+.ai-chatbox {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 320px;
+    height: 400px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.ai-chatbox.hidden {
+    display: none;
+}
+
+.chat-header {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h3 {
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fafafa;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 13px;
+    max-width: 85%;
+}
+
+.ai-msg {
+    background: #eee;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.user-msg {
+    background: var(--secondary-color);
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+.chat-footer {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid #eee;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+
+.chat-footer button {
+    background: transparent;
+    border: none;
+    color: var(--secondary-color);
+    font-weight: bold;
+    cursor: pointer;
+}
