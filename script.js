@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('¡Solicitud enviada con éxito! La agencia revisará tu perfil.');
+        alert('Portafolio recibido. Si tienes el perfil adecuado, nuestro equipo te contactará. De lo contrario, no esperes una llamada.');
         modal.style.display = 'none';
         applyForm.reset();
     });
@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const chatBody = document.getElementById('chat-body');
 
-    // Abrir/Cerrar chat
     aiToggle.addEventListener('click', () => {
         aiChat.classList.toggle('hidden');
     });
@@ -46,48 +45,44 @@ document.addEventListener('DOMContentLoaded', () => {
         aiChat.classList.add('hidden');
     });
 
-    // Función para agregar mensajes al chat
     function addMessage(text, sender) {
         const msgDiv = document.createElement('div');
         msgDiv.classList.add('message');
         msgDiv.classList.add(sender === 'user' ? 'user-msg' : 'ai-msg');
         msgDiv.textContent = text;
         chatBody.appendChild(msgDiv);
-        chatBody.scrollTop = chatBody.scrollHeight; // Scrollear al fondo
+        chatBody.scrollTop = chatBody.scrollHeight;
     }
 
-    // Lógica de simulación de respuesta AI
     function handleChat() {
         const userText = chatInput.value.trim();
         if (userText === '') return;
 
-        // Mostrar mensaje del usuario
         addMessage(userText, 'user');
         chatInput.value = '';
 
-        // Simular tiempo de pensamiento de la IA (1 segundo)
         setTimeout(() => {
             let aiResponse = "";
             const textLower = userText.toLowerCase();
 
-            // Lógica de palabras clave para respuestas dinámicas
-            if (textLower.includes('vogue') || textLower.includes('tendencia')) {
-                aiResponse = "Esta temporada en Vogue, la clave es combinar texturas. Prueba mezclar sedas ligeras con cuero estructurado.";
+            if (textLower.includes('flores') || textLower.includes('primavera')) {
+                aiResponse = "¿Flores? ¿Para primavera? Qué innovador. Hablemos de estructuración y abrigos de corte impecable mejor.";
+            } else if (textLower.includes('vogue') || textLower.includes('tendencia')) {
+                aiResponse = "Las tendencias son para quienes carecen de estilo propio. Invierte en piezas de alto valor que dicten presencia, no que sigan a la masa.";
             } else if (textLower.includes('casting') || textLower.includes('agencia')) {
-                aiResponse = "Para un casting, ve al natural: jeans ajustados negros, camiseta básica blanca, botas o tacones simples y un maquillaje 'no-makeup'. ¡Deja que tu estructura ósea resalte!";
-            } else if (textLower.includes('colores') || textLower.includes('paleta')) {
-                aiResponse = "Los colores tendencia son el rojo cereza profundo, el clásico negro carbón y toques de dorado opaco. ¿Quieres que analice qué color va con tu tono de piel?";
+                aiResponse = "Jeans negros, camiseta blanca impecable y tu estructura ósea. Si necesitas esconderte detrás del maquillaje, no estás lista para la pasarela.";
+            } else if (textLower.includes('rojo') || textLower.includes('color')) {
+                aiResponse = "El rojo no es solo un color, es una declaración. Úsalo solo si estás lista para que toda la habitación te mire al entrar. De lo contrario, usa negro.";
             } else {
-                aiResponse = "¡Qué interesante! Como tu asistente de imagen, te sugiero siempre mantener la confianza. La ropa es importante, pero la actitud al caminar es lo que cierra los contratos.";
+                aiResponse = "No tengo tiempo para trivialidades. Asegúrate de que lo que llevas puesto refleje exactamente cuánto vales.";
             }
 
             addMessage(aiResponse, 'ai');
-        }, 1000);
+        }, 1200);
     }
 
     sendBtn.addEventListener('click', handleChat);
     
-    // Permitir enviar con la tecla Enter
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             handleChat();
