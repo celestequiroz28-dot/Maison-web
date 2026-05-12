@@ -3,98 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maison Web | Alta Costura y Modelaje</title>
+    <title>Maison Web | The Runway Edit</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Fuentes de Google para un toque elegante -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">Maison Web</div>
+        <div class="logo">MAISON</div>
         <ul class="nav-links">
-            <li><a href="#tendencias">Tendencias</a></li>
+            <li><a href="#tendencias">Editorial</a></li>
+            <li><a href="#pasarelas">Pasarelas</a></li>
             <li><a href="#agencias">Agencias</a></li>
         </ul>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Descubre tu Estilo, Define la Pasarela</h1>
-            <p>Lo último de Vogue, Dolce & Gabbana y las oportunidades para brillar en la industria.</p>
-            <a href="#agencias" class="btn-primary">Inicia tu Carrera</a>
+            <h1>La Posesión del Lujo</h1>
+            <p>Prendas de alto valor, actitud implacable y el estándar definitivo de la moda.</p>
+            <a href="#tendencias" class="btn-primary">Explorar la Edición</a>
         </div>
     </header>
 
     <section id="tendencias" class="section">
-        <h2>Últimas Tendencias</h2>
+        <h2>El Editorial</h2>
         <div class="grid-container">
             <div class="card">
                 <div class="card-img mock-img-1"></div>
-                <h3>Vogue Edit: Temporada</h3>
-                <p>Las siluetas que están dominando las capitales de la moda este trimestre.</p>
+                <h3>Lo Último en Primavera de Vogue</h3>
+                <p>Las siluetas estructurales y la reinvención del armario de alto valor.</p>
+                <a href="primavera.html" class="btn-editorial">Ver Folleto Exclusivo</a>
             </div>
             <div class="card">
                 <div class="card-img mock-img-2"></div>
-                <h3>Dolce & Gabbana: Renacimiento</h3>
-                <p>El regreso del maximalismo refinado y los estampados icónicos de la casa italiana.</p>
+                <h3>Archivo: Dolce & Gabbana</h3>
+                <p>El maximalismo refinado, encaje negro y la sensualidad italiana atemporal.</p>
+                <a href="#" class="btn-editorial">Ver Colección</a>
             </div>
             <div class="card">
                 <div class="card-img mock-img-3"></div>
-                <h3>Lujo de los 90s & Paparazzi Style</h3>
-                <p>El grano fílmico, el motion blur y la estética casual-chic capturada in fraganti vuelven a ser el centro de atención.</p>
+                <h3>90s Luxury & Paparazzi</h3>
+                <p>Grano fílmico, motion blur y el glamour de ser capturada huyendo de los flashes.</p>
+                <a href="#" class="btn-editorial">Ver Galería</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pasarelas" class="section bg-dark">
+        <h2 class="text-white">Front Row</h2>
+        <p class="subtitle-dark">Acceso directo a las pasarelas que dictan el curso del año.</p>
+        <div class="grid-container">
+            <div class="video-card">
+                <h3>Paris Fashion Week Haute Couture</h3>
+                <a href="https://www.youtube.com/watch?v=Ejm6jm9m3M8" target="_blank" class="btn-youtube">▶ Ver en YouTube</a>
+            </div>
+            <div class="video-card">
+                <h3>Milan: Colección Otoño/Invierno</h3>
+                <a href="https://www.youtube.com/watch?v=Ejm6jm9m3M8" target="_blank" class="btn-youtube">▶ Ver en YouTube</a>
             </div>
         </div>
     </section>
 
     <section id="agencias" class="section bg-light">
-        <h2>Aplica a Agencias Top</h2>
+        <h2>El Círculo Íntimo</h2>
         <div class="grid-container">
             <div class="agency-card">
                 <h3>IMG Models</h3>
-                <p>Representación global para talentos de alta costura.</p>
-                <button class="btn-secondary apply-btn">Aplicar Ahora</button>
-            </div>
-            <div class="agency-card">
-                <h3>Elite Model Management</h3>
-                <p>Descubriendo los rostros de las próximas campañas de lujo.</p>
-                <button class="btn-secondary apply-btn">Aplicar Ahora</button>
+                <p>Representación exclusiva. Solo perfiles de alta costura.</p>
+                <button class="btn-primary apply-btn">Solicitar Evaluación</button>
             </div>
         </div>
     </section>
 
-    <!-- Modal de Aplicación -->
     <div id="applyModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2>Envía tu Portafolio</h2>
+            <p>Asegúrate de que tus polaroids sean impecables.</p>
             <form id="applyForm">
                 <input type="text" placeholder="Nombre Completo" required>
                 <input type="email" placeholder="Correo Electrónico" required>
-                <input type="url" placeholder="Enlace a tu Portafolio/Instagram" required>
+                <input type="url" placeholder="Enlace a tu Portafolio (Filtro estricto)" required>
                 <button type="submit" class="btn-primary">Enviar Solicitud</button>
             </form>
         </div>
     </div>
 
-    <!-- Asistente de Imagen AI (Botón flotante y Chat) -->
     <div class="ai-assistant-container">
-        <button id="ai-toggle" class="ai-fab">✨ Asistente de Imagen</button>
+        <button id="ai-toggle" class="ai-fab">✦ Asistente VIP</button>
         <div id="ai-chat" class="ai-chatbox hidden">
             <div class="chat-header">
-                <h3>Asistente de Estilo AI</h3>
+                <h3>Dirección de Arte AI</h3>
                 <span id="close-chat">&times;</span>
             </div>
             <div class="chat-body" id="chat-body">
-                <div class="message ai-msg">¡Hola! Soy tu asistente de imagen. ¿Buscas inspiración de outfits, consejos para tu casting o quieres saber qué paleta te favorece?</div>
+                <div class="message ai-msg">Asistente en línea. Dime qué llevas puesto para decirte por qué deberías cambiarte.</div>
             </div>
             <div class="chat-footer">
-                <input type="text" id="chat-input" placeholder="Pregúntame sobre moda...">
+                <input type="text" id="chat-input" placeholder="Consulta de estilo...">
                 <button id="send-btn">Enviar</button>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primavera Edit | Maison Web</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+</head>
+<body class="brochure-body">
+
+    <nav class="navbar solid-nav">
+        <div class="logo"><a href="index.html" style="color: black; text-decoration: none;">MAISON</a></div>
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+    </nav>
+
+    <main class="brochure-container">
+        <div class="brochure-header">
+            <h1>Primavera / Verano</h1>
+            <p class="issue-number">Issue Nº 01 — The Value Collection</p>
+        </div>
+
+        <div class="brochure-content">
+            <div class="text-column">
+                <p><span class="dropcap">L</span>a posesión de prendas de alto valor no se trata de logomanía, sino de cortes precisos, telas arquitectónicas y una presencia que silencia la habitación al entrar. Esta primavera, Vogue dicta el fin de lo efímero.</p>
+                <p>Olvídate de las tendencias pasajeras. Invertir en una gabardina estructurada o en joyería de oro macizo es el único movimiento aceptable esta temporada.</p>
+            </div>
+            <div class="image-column">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800" alt="High Fashion" class="brochure-img">
+            </div>
+        </div>
+
+        <div class="brochure-footer">
+            <a href="https://www.youtube.com/watch?v=Ejm6jm9m3M8" target="_blank" class="btn-primary">Ver la Pasarela en YouTube</a>
+        </div>
+    </main>
+
 </body>
 </html>
