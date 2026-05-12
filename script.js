@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Funciones reutilizables para el modal
-    const openModal = () => modal.style.display = 'flex';
+    const openModal = () => {
+        modal.style.display = 'flex';
+        // Focus en el primer input para mejor UX
+        applyForm.querySelector('input[type="text"]')?.focus();
+    };
     const closeModal = () => modal.style.display = 'none';
 
     applyButtons.forEach(btn => {
@@ -31,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        const formData = new FormData(applyForm);
         alert('Portafolio recibido. Si tienes el perfil adecuado, nuestro equipo te contactará. De lo contrario, no esperes una llamada.');
         closeModal();
         applyForm.reset();
@@ -56,27 +61,85 @@ document.addEventListener('DOMContentLoaded', () => {
     // Validación de elementos opcionales con optional chaining
     aiToggle?.addEventListener('click', () => {
         aiChat.classList.toggle('hidden');
+        if (!aiChat.classList.contains('hidden')) {
+            chatInput.focus();
+        }
     });
 
     closeChat?.addEventListener('click', () => {
         aiChat.classList.add('hidden');
     });
 
-    // Base de datos de respuestas del AI (más fácil de mantener)
+    // Base de datos extendida de respuestas del AI con elocuencia
     const AI_RESPONSES = {
-        flowers: "¿Flores? ¿Para primavera? Qué innovador. Hablemos de estructuración y abrigos de corte impecable mejor.",
-        trends: "Las tendencias son para quienes carecen de estilo propio. Invierte en piezas de alto valor que dicten presencia, no que sigan a la masa.",
-        casting: "Jeans negros, camiseta blanca impecable y tu estructura ósea. Si necesitas esconderte detrás del maquillaje, no estás lista para la pasarela.",
-        color: "El rojo no es solo un color, es una declaración. Úsalo solo si estás lista para que toda la habitación te mire al entrar. De lo contrario, usa negro.",
-        default: "No tengo tiempo para trivialidades. Asegúrate de que lo que llevas puesto refleje exactamente cuánto vales."
+        flores: "Las flores son para quienes carecen de estructura visual. En cambio, invierte en flores de seda de Hermès con arranjo de orquídeas negras. O mejor aún, lleva flores en tu atuendo: bordados florales en Valentino, no en tu florero.",
+        
+        primavera: "Primavera es el momento de siluetas arquitectónicas. Olvida lo pastel. Blanco óptico, negro carbón, beige de arena. Lino italiano, algodón pima. Gabardina estructurada. Tu presencia debe ser el color principal.",
+        
+        vogue: "Vogue dicta tendencias. Pero si necesitas seguir a Vogue, ya perdiste. El poder está en establecer tu propio lenguaje visual. Las verdaderas iconos no leen Vogue, Vogue lee sus movimientos.",
+        
+        tendencia: "Las tendencias son para quienes carecen de estilo propio. Invierte en piezas arquitectónicas que trascienden temporadas. Un corte perfecto nunca pasa de moda.",
+        
+        casting: "Jeans negros impecables, camiseta blanca perfecta, y tu estructura ósea. Si necesitas esconderte detrás del maquillaje, no estás lista. El casting valida o rechaza tu presencia pura.",
+        
+        rojo: "El rojo no es solo color, es declaración de guerra. Úsalo solo si estás lista para que toda la habitación se gire al entrar. De lo contrario, usa negro y deja que te encuentren.",
+        
+        negro: "Negro es la única respuesta correcta. Negro absorbe lujo. Negro dice: no necesito distracción visual. Negro es poder contenido. Negro es siempre correcto.",
+        
+        oro: "Oro puro, no chapado. Cartier, Bulgari, Van Cleef. Si brilla tanto que duele mirar, entonces es oro verdadero. El falso oro es traición a tu valor.",
+        
+        bolso: "El bolso es tu firma. Hermès Kelly o Birkin. O nada. Un bolso correcto define épocas. Naomi lo llevaba así, Cindy de esta forma. El bolso es tu declaración de jerarquía.",
+        
+        zapatos: "Manolo Blahnik, Christian Louboutin, o arquitecto desconocido que entiende que el tacón es engineering, no decoración. Cada paso debe ser silencioso pero audible.",
+        
+        encaje: "Encaje es confianza suprema. Solo llévalo si controlas tu cuerpo completamente. El encaje no oculta, revela intención. Dolce & Gabbana entiende esto mejor que nadie.",
+        
+        minimalismo: "Minimalismo es maximalismo en reversa. Menos ropa, mejor ropa. Menos opciones, más poder. Cada pieza debe justificar su existencia.",
+        
+        lujo: "El lujo verdadero no brilla. El lujo susurra. Si necesitas gritar que es caro, no es lujo. El verdadero lujo es invisibilidad de lo excepcional.",
+        
+        estructura: "La estructura es todo. En ropa, en pose, en presencia. Un blazer con estructura adecuada es más importante que cualquier accesorios. Invierte en arquitectura.",
+        
+        pasarela: "La pasarela es donde se dicta la visión. No es democracia, es jerarquía visual. Las mejores supermodels no andan, esculpen el espacio.",
+        
+        supermodelo: "Naomi. Cindy. Linda. Christy. Todas entendían: presencia es más importante que belleza. Belleza es accidental. Presencia es entrenamiento, es poder, es elección.",
+        
+        fotografía: "Herb Ritts transformó moda en escultura. Peter Lindbergh capturó verdad. La fotografía correcta es iluminación, no retoques. El grano fílmico dice más que cualquier filtro.",
+        
+        material: "Lino italiano. Algodón pima. Seda pura. Cuero que envejece bien. Los materiales verdaderos se reconocen por tacto. Si tienes que preguntarle al vendedor, no es lujo.",
+        
+        cuerpo: "Tu cuerpo es tu mejor prenda. La ropa debe amplificarlo, no cubrirlo. Si no confías en tu cuerpo, no deberías confiar en el diseñador.",
+        
+        presencia: "La presencia es lo que no puedes comprar. Es control. Es certeza. Es saber que ocupas espacio justificadamente. Eso es lo que las mejores modelos llevaban en los 90s.",
+        
+        paparazzi: "Los paparazzi iban tras Naomi porque su presencia era tan fuerte que necesitaban documentarla. No era sobre belleza, era sobre poder. Eso es lo que buscamos.",
+        
+        default: "Tu pregunta requiere reflexión más profunda. La moda no es sobre respuestas rápidas. Es sobre intención, precisión, y certeza absoluta en cada elección que haces. ¿Realmente sabes por qué llevas lo que llevas?"
     };
 
-    // Palabras clave para cada respuesta
+    // Palabras clave para cada respuesta - expandidas y más específicas
     const KEYWORDS_MAP = {
-        flowers: ['flores', 'primavera'],
-        trends: ['vogue', 'tendencia'],
-        casting: ['casting', 'agencia'],
-        color: ['rojo', 'color']
+        flores: ['flores', 'floral', 'primaveras'],
+        primavera: ['primavera', 'verano', 'estación', 'temporada'],
+        vogue: ['vogue', 'revista', 'editorial'],
+        tendencia: ['tendencia', 'trendy', 'moda', 'viral'],
+        casting: ['casting', 'agencia', 'modelo', 'selección', 'prueba'],
+        rojo: ['rojo', 'colorido', 'color'],
+        negro: ['negro', 'dark', 'oscuro'],
+        oro: ['oro', 'joyería', 'joyas', 'cartier', 'bulgari'],
+        bolso: ['bolso', 'bolsa', 'hermès', 'kelly', 'birkin', 'cartera'],
+        zapatos: ['zapatos', 'tacones', 'manolo', 'louboutin', 'calzado'],
+        encaje: ['encaje', 'transparencia', 'dolce', 'gabbana'],
+        minimalismo: ['minimalismo', 'simple', 'esencial', 'básico'],
+        lujo: ['lujo', 'lujoso', 'premium', 'alto valor'],
+        estructura: ['estructura', 'blazer', 'arquitectura', 'corte'],
+        pasarela: ['pasarela', 'runway', 'desfile', 'show'],
+        supermodelo: ['naomi', 'cindy', 'linda', 'christy', 'supermodelo', 'modelo'],
+        fotografía: ['fotografía', 'herb', 'lindbergh', 'meisel', 'foto'],
+        material: ['lino', 'algodón', 'seda', 'cuero', 'tejido', 'material'],
+        cuerpo: ['cuerpo', 'forma', 'silueta', 'postura'],
+        presencia: ['presencia', 'aura', 'energía', 'poder'],
+        paparazzi: ['paparazzi', '90s', 'noventa', 'flash', 'grano fílmico']
     };
 
     function addMessage(text, sender) {
@@ -86,6 +149,15 @@ document.addEventListener('DOMContentLoaded', () => {
         chatBody.appendChild(msgDiv);
         // Usar scrollIntoView para mejor compatibilidad
         msgDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
+    function addTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.classList.add('message', 'ai-msg', 'typing-indicator');
+        typingDiv.innerHTML = '<span></span><span></span><span></span>';
+        chatBody.appendChild(typingDiv);
+        typingDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        return typingDiv;
     }
 
     function getAIResponse(userText) {
@@ -103,25 +175,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleChat() {
         const userText = chatInput.value.trim();
-        if (!userText) return; // Más simple que === ''
+        if (!userText) return;
 
         addMessage(userText, 'user');
         chatInput.value = '';
 
-        // Usar AbortController para poder cancelar si es necesario
+        // Mostrar indicador de tipeo
+        const typingDiv = addTypingIndicator();
+
+        // Simular pensamiento del AI con delay realista
         const timeout = setTimeout(() => {
+            // Remover indicador de tipeo
+            typingDiv.remove();
+            
             const aiResponse = getAIResponse(userText);
             addMessage(aiResponse, 'ai');
-        }, 1200);
+        }, 1500 + Math.random() * 1000); // Entre 1.5 y 2.5 segundos
 
-        // Opcionalmente guardar el timeout para poder cancelarlo después
+        // Guardar timeout para posible cancelación futura
         chatInput.dataset.pendingTimeout = timeout;
     }
 
     sendBtn?.addEventListener('click', handleChat);
     
     chatInput?.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) { // Shift+Enter para nueva línea si lo necesitas
+        if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             handleChat();
         }
